@@ -2,6 +2,7 @@ const express = require('express')
 const hbs = require('hbs')
 const fs = require('fs')
 
+const port = process.env.PORT || 3000
 const app = express()
 
 
@@ -26,9 +27,9 @@ app.use((req, res, next) => {
 })
 
 
-app.use((req, res) => {
-  res.render('maintenance.hbs')
-})
+// app.use((req, res) => {
+//   res.render('maintenance.hbs')
+// })
 
 hbs.registerHelper('getCurrentYear', () => new Date().getFullYear() )
 hbs.registerHelper('screamIt', (text) => text.toUpperCase()  )
@@ -53,6 +54,6 @@ app.get('/bad', (req, res) => {
   })
 })
 
-app.listen(8080,  () => {
-  console.log("Listening on port:", 8080)
+app.listen(port,  () => {
+  console.log("Listening on port:", port)
 })
